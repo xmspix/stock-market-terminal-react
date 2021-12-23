@@ -1,0 +1,37 @@
+.notification {
+  position: relative;
+  border-radius: 50%;
+  width: 1.3em;
+  line-height: 1.3em;
+  text-align: center;
+  font-size: 0.8em;
+
+  &--gray {
+    margin-left: 5px;
+    display: inline-block;
+    background: $font-color-gray;
+  }
+
+  &--top-red {
+    background: red;
+    color: #fff;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.5em;
+  }
+
+  &--friend-red {
+    background: red;
+    color: #fff;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    font-size: 1em;
+  }
+
+  &--status-green {
+    color: #79e7a0;
+    margin-right: 5px;
+  }
+}

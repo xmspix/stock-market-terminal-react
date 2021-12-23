@@ -1,0 +1,92 @@
+.footer {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    padding: 10px;
+    overflow: hidden;
+
+    &__text {
+        margin-left: 2em;
+        min-width: 6em;
+        text-transform: capitalize;
+        font-size: 1.5em;
+        font-weight: 900;
+
+        &::before {
+            content: "●";
+            color: #f53c3c;
+            margin-right: 5px;
+        }
+    }
+
+    &__news {
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        font-weight: 900;
+        flex: 1;
+        margin: 0 20px;
+
+        &__container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 20px;
+        }
+
+        &__icon {
+            height: 20px;
+            width: 20px;
+            background: black;
+            padding: 3px;
+            border-radius: 5px;
+        }
+
+        &__company {
+            margin: 0 5px;
+            font-size: 0.2em;
+        }
+
+        &__time {
+            font-size: 0.2em;
+            margin-right: 5px;
+            color: $font-color-gray;
+        }
+
+        &--marquee {
+            overflow: hidden;
+            position: relative;
+            width: 80%;
+
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+
+            &::before {
+                content: "\00a0";
+            }
+
+            &-scrolling {
+                animation: marquee 30s linear infinite;
+                display: block;
+                min-width: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                white-space: nowrap;
+                -webkit-animation: marquee 30s linear infinite;
+            }
+        }
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}

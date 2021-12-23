@@ -1,0 +1,24 @@
+.watchlist {
+  // position: relative;
+  
+  &__options {
+    padding: 0 10px;
+    opacity: 0;
+    height: 0;
+  }
+
+  &__options--active {
+    opacity: 1;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    height: 250px;
+    width: 100%;
+    background-color: #2b2c2e;
+    z-index: 1;
+  }
+
+  &__list{
+    list-style: none;
+  }
+}

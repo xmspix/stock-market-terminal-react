@@ -1,0 +1,19 @@
+.filters {
+    margin: 0 20px;
+    color: #fff;
+
+    &__container {
+        display: flex;
+        align-items: center;
+    }
+    
+    &__col{
+        margin: 0 20px;
+        flex: 0 80px;
+        display: flex;
+    }
+
+    &__col, .input__dark {
+        margin: 1px 1px;
+    }
+}

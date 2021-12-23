@@ -1,0 +1,88 @@
+.icon {
+  width: 28px;
+  height: 28px;
+
+  &__stroke {
+    stroke: #fff;
+  }
+  &__fill {
+    fill: #fff;
+  }
+
+  &__daily {
+    &::before {
+      @include font-awesome("\f5b7");
+      z-index: 1;
+      position: relative;
+      left: 5px;
+    }
+  }
+
+  &__calendar {
+    &::before {
+      @include font-awesome("\f133");
+      z-index: 1;
+      position: relative;
+      left: 5px;
+    }
+  }
+
+  &__crypto {
+    &::before {
+      @include font-awesome-brands("\f379");
+      z-index: 1;
+      position: relative;
+      left: 5px;
+      // width: 0;
+    }
+  }
+
+  &__filter {
+    &::before {
+      @include font-awesome("\f0b0");
+      margin-right: 20px;
+    }
+  }
+
+  &__chart {
+    &::before {
+      @include font-awesome("\f201");
+      z-index: 1;
+      position: relative;
+      margin-right: 20px;
+    }
+  }
+
+  &__add {
+    &::before {
+      @include font-awesome("\f067");
+      // content: "+";
+      margin-right: 20px;
+    }
+  }
+
+  &__exchanges {
+    &::before {
+      @include font-awesome("\f277");
+      z-index: 1;
+      position: relative;
+      margin-right: 20px;
+    }
+  }
+  &__window {
+    &::before {
+      @include font-awesome("\f2d2");
+      z-index: 1;
+      position: relative;
+      margin-right: 20px;
+    }
+  }
+  &__wallet {
+    &::before {
+      @include font-awesome("\f555");
+      z-index: 1;
+      position: relative;
+      margin-right: 20px;
+    }
+  }
+}

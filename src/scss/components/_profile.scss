@@ -1,0 +1,92 @@
+.profile {
+    grid-area: profile;
+    position: fixed;
+    background: #2d2f32;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    z-index: -1;
+    &__active {
+        opacity: 1;
+        z-index: 1;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+    }
+
+    &__friends-container {
+        height: calc(100vh - 200px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__friends {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__container {
+        position: relative;
+        background: $bg-color-secondary;
+        height: 50px;
+
+        &::after {
+            content: "●";
+            color: #79e7a0;
+            position: absolute;
+            bottom: 1px;
+            right: 5px;
+            font-size: 2em;
+        }
+    }
+
+    &__pic {
+        position: relative;
+        padding: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    }
+
+    &__options {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        color: $font-color-gray;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        height: 150px;
+        border-top: 1px solid $color-gray-light;
+        border-bottom: 1px solid $color-gray-light;
+
+        & > * {
+            margin: 15px 0;
+        }
+    }
+
+    &__friend {
+        position: relative;
+
+        &::after {
+            content: "●";
+            color: #79e7a0;
+            position: absolute;
+            bottom: 1px;
+            right: 5px;
+            font-size: 2em;
+        }
+    }
+}

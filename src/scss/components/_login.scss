@@ -1,0 +1,29 @@
+.login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+
+    &__form {
+        font-size: 1.4em;
+        color: #eee;
+    }
+
+    &__email, &__password {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__submit {
+        display: flex;
+        width: -webkit-fill-available;
+        height: 2em;
+        justify-content: center;
+        margin-top: 1em;
+    }
+}

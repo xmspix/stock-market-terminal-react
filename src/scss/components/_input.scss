@@ -1,0 +1,11 @@
+.input {
+  padding-left: 10px;
+  border-radius: 5px;
+  height: 30px;
+  border: 0;
+  color: #fff;
+
+  &__dark {
+    background: $bg-color-dark;
+  }
+}

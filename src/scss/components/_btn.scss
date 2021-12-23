@@ -1,0 +1,132 @@
+.btn {
+  @include hover;
+  cursor: pointer;
+  border: 0;
+  position: relative;
+
+  &__light {
+    padding: 7px;
+    color: #ccc;
+    background: $color-gray-light;
+  }
+
+  &__dark {
+    padding: 7px;
+    color: $font-color-main;
+    background: $bg-color-dark;
+  }
+
+  &__round-corners {
+    @include radius-left-side;
+    @include radius-right-side;
+  }
+
+  &__menu {
+    color: $font-color-main;
+    margin-left: 14px;
+    padding: 10px;
+    background: $bg-color-secondary;
+    border: 1px solid $bg-color-main;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    font-family: "Roboto", "sans serif";
+
+    &::before {
+      content: "\f142";
+      margin-right: 5px;
+      font-family: "Font Awesome 5 Free";
+    }
+  }
+
+  &__select {
+    padding: 7px;
+    align-self: center;
+    color: $font-color-main;
+    background: $bg-color-dark;
+  }
+
+  &__select-round {
+    position: absolute;
+    right: 5px;
+    background: $bg-color-main;
+    padding: 4px;
+    font-size: 10px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+
+  &__select-left {
+    @include radius-left-side;
+    margin-right: 1px;
+  }
+
+  &__select-right {
+    @include radius-right-side;
+    margin-left: 1px;
+  }
+
+  &__timeframe {
+    border: 0;
+    background: none;
+    color: $font-color-main;
+
+    &:not(:last-child) {
+      margin-right: 2px;
+    }
+  }
+
+  &__list {
+    margin: 0 5px;
+  }
+
+  &__add-symbol {
+    margin-right: 5px;
+
+    &::before {
+      content: "+";
+      margin-right: 10px;
+    }
+  }
+
+  &__multiplier {
+    margin-right: 5px;
+
+    &::before {
+      @include font-awesome("\f0ce");
+      margin-right: 20px;
+    }
+  }
+
+  &__correlation {
+    margin-right: 5px;
+    &::before {
+      @include font-awesome("\f542");
+      margin-right: 20px;
+    }
+  }
+  &__gear {
+    margin-right: 5px;
+    &::before {
+      @include font-awesome("\f013");
+      margin-right: 20px;
+    }
+  }
+
+  &__friend-add {
+    margin-bottom: 5px;
+    background: #4d8c7a;
+    color: #ccc;
+    padding: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+}
