@@ -1,19 +1,18 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import React from "react";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
-import Header from './components/Header';
-import Home from './pages/Home';
+import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          {/* <Route path="/charts" component={Charts} exact={true} /> */}
-          {/* <Route path="/login" component={Login} exact={true} /> */}
-        </Routes>
-      </BrowserRouter>
+    // HashRouter is used for Github Pages
+    <HashRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </HashRouter>
   );
 }
 

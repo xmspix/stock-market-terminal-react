@@ -1,6 +1,6 @@
 {
   "name": "stock-market-terminal-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "homepage": "https://xmspix.github.io/stock-market-terminal-react",
   "dependencies": {
@@ -21,8 +21,10 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "release": "node scripts/release.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"

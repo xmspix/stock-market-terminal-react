@@ -1,6 +1,6 @@
 import React from "react";
 import store from "../store";
-import { widgetCount } from "../utils/helpers";
+// import { widgetCount } from "../utils/helpers";
 
 interface IMaximizeBtn {
     widget: string;
@@ -29,7 +29,7 @@ export const MaximizeBtn = ({widget}: IMaximizeBtn) => {
     const onClick = (e:any) => {
         const widgetElement: HTMLDivElement = e.target.parentElement.parentElement.parentElement;
         if(store.isWidgetMaximized){
-            const widgetSize: any = (window.innerHeight - 50 - 40) / widgetCount(store.widgets.length);
+            // const widgetSize: any = (window.innerHeight - 50 - 40) / widgetCount(store.widgets.length);
             store.setWidgetMaximize("", false);
             widgetElement.classList.remove("widget__maximize");
             // widgetElement.style.height = `${widgetSize}px`;

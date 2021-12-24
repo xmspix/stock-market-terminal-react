@@ -11,7 +11,7 @@ export default function Header() {
         const profileElem = document.querySelector<HTMLDivElement>('.profile');
         if (active) {
             profileElem?.classList.add("profile__active");
-            rootElem!.style.width = "calc(100% - 50px)"
+            rootElem!.style.width = "calc(100% - 50px)";
         }
     }, [active])
 
@@ -42,7 +42,6 @@ export default function Header() {
         <nav className="header__nav">
             <ul className="header__list">
                 <li className="header__list-item"><NavLink to="/" className={location.pathname !== '/' ? "header__list-link" : 'header__list-link header__list-link-active'}>Main</NavLink></li>
-                <li className="header__list-item"><NavLink to="/charts" className={location.pathname !== '/charts' ? "header__list-link" : 'header__list-link header__list-link-active'}>Charts</NavLink></li>
             </ul>
         </nav>
         <div className="header__status">
