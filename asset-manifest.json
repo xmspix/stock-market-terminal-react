@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/stock-market-terminal-react/static/css/main.d604a17c.css",
-    "main.js": "/stock-market-terminal-react/static/js/main.74407c18.js",
+    "main.css": "/stock-market-terminal-react/static/css/main.d803b958.css",
+    "main.js": "/stock-market-terminal-react/static/js/main.6518d345.js",
     "static/js/787.c8699d61.chunk.js": "/stock-market-terminal-react/static/js/787.c8699d61.chunk.js",
     "static/media/fa-solid-900.svg": "/stock-market-terminal-react/static/media/fa-solid-900.7a8b4f130182d19a2d7c.svg",
     "static/media/fa-brands-400.svg": "/stock-market-terminal-react/static/media/fa-brands-400.2f517e09eb2ca6650ff5.svg",
@@ -23,12 +23,12 @@
     "static/media/Jordan Singer.jpg": "/stock-market-terminal-react/static/media/Jordan Singer.ccb729db2b8ae5ca96e9.jpg",
     "static/media/sprite.svg": "/stock-market-terminal-react/static/media/sprite.66d95d56fc6913917e92090281cb742a.svg",
     "index.html": "/stock-market-terminal-react/index.html",
-    "main.d604a17c.css.map": "/stock-market-terminal-react/static/css/main.d604a17c.css.map",
-    "main.74407c18.js.map": "/stock-market-terminal-react/static/js/main.74407c18.js.map",
+    "main.d803b958.css.map": "/stock-market-terminal-react/static/css/main.d803b958.css.map",
+    "main.6518d345.js.map": "/stock-market-terminal-react/static/js/main.6518d345.js.map",
     "787.c8699d61.chunk.js.map": "/stock-market-terminal-react/static/js/787.c8699d61.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d604a17c.css",
-    "static/js/main.74407c18.js"
+    "static/css/main.d803b958.css",
+    "static/js/main.6518d345.js"
   ]
 }
