@@ -1,0 +1,6 @@
+[
+    {"symbol":"AAPL", "list": "General"},
+    {"symbol":"MSFT", "list": "General"},
+    {"symbol":"NVDA", "list": "Hot"},
+    {"symbol":"AMD", "list": "Hot"}
+]
