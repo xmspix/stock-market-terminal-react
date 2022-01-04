@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import store from "../store";
 import Modal from "./Modal";
 import { widgets } from "../utils/widgetOptions";

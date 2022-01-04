@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { getWatchlist, getWatchlistNames } from "../../data";
 import { numberFormater } from "../../utils/helpers";
 import { Idata } from "./Screener";

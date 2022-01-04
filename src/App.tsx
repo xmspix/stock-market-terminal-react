@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
+import Chart from "./components/Widgets/Chart";
 import Matrix from "./components/Widgets/Matrix";
 import PositionTracker from "./components/Widgets/PositionTracker";
 import Screener from "./components/Widgets/Screener";
@@ -18,7 +19,7 @@ function App() {
       {id:2, type: 'test', tab: 'Test', isActive: false, content: <div>Test body</div> },
     ];
     const widget2 = [
-      {id:3, type: 'chart', tab: 'Chart', isActive: true, content: <div>Chart will be added in next release</div> },
+      {id:3, type: 'chart', tab: 'Chart', isActive: true, content: <Chart/> },
     ];
     const widget3 = [
       {id:4, type: 'watchlist', tab: 'Watchlist', isActive: true, content: <Watchlist /> },

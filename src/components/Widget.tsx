@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import React,{ useRef } from 'react'
 import { MaximizeBtn, CloseBtn } from '../components/Buttons';
 import WidgetTabs from './WidgetTabs';
 import store from '../store';
@@ -27,7 +27,9 @@ function Widget({ options, widgetID }: IWidget) {
     return <>
       {data.length === 0 && <div className="widget__body">No data</div>}
       {data.length >= 1 && data.map((item: IOptions, i: number) =>
-        <div key={i} className="widget__body" ref={widgetBody} id={item.tab + item.id}>
+        <div key={i} className="widget__body" 
+          style={store.isWidgetMaximized ? {maxHeight: '100vh'} : {maxHeight: '296px'}}
+        ref={widgetBody} id={item.tab + item.id}>
           {item.isActive && item.content}
         </div>)}
     </>

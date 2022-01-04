@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
+import store from "../../store";
 import { numberFormater } from "../../utils/helpers";
 export interface Idata {
     changeNet: number;
@@ -14,7 +16,7 @@ export interface Idata {
     volume: number;
 }
 
-export default function Screener() {
+function Screener() {
     const [data, setData]: any[] = useState(null);
 
     useEffect(() => {
@@ -78,7 +80,7 @@ export default function Screener() {
 
         const WidgetBody = () => {
             return (
-                <div>
+                <>
                     <table className="table table__watchlist">
                         <thead className="table__labels">
                             <tr className="table__row">
@@ -105,15 +107,18 @@ export default function Screener() {
                             })}
                         </tbody>
                     </table>
-                </div>
+                </>
             );
         };
 
         return (
             <>
-                {/* <WidgetToolbar /> */}
+                {store.isWidgetMaximized && <WidgetToolbar />}
                 <WidgetBody />
             </>
         );
     }
 }
+
+
+export default observer(Screener);

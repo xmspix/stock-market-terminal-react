@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function PositionTracker() {
     const WidgetToolbar = () => {
         return <div className="widget__toolbar">

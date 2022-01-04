@@ -1,4 +1,4 @@
-
+import React from 'react';
 import FooterNews from './FooterNews';
 
 export default function Footer() {

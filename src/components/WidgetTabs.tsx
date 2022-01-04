@@ -1,3 +1,4 @@
+import React from 'react';
 import WidgetTabAdd from "./WidgetTabAdd";
 import { IOptions } from "./Widget";
 import store from '../store';

@@ -92,7 +92,7 @@ $widget-height: 335px;
     &__body {
         display: grid;
         overflow: scroll;
-        max-height: $widget-height - 85px;
+        max-height: 296px;
     }
 
     &__switch {

@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
-import { toJS } from 'mobx';
+import React, { useEffect } from 'react';
 import Profile from '../components/Profile';
 import store from '../store';
 import { widgetCount } from '../utils/helpers';
-import Watchlist from '../components/Widgets/Watchlist';
 import Footer from '../components/Footer';
 import { observer } from 'mobx-react-lite';
 import Widget from '../components/Widget';
@@ -25,15 +23,8 @@ function Home() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    let tabID = 7;
-    const update = () => {
-        tabID++;
-        store.updateWidget(0, { id: tabID, type: 'watchlist', tab: 'Watchlist', isActive: false, content: <Watchlist /> });
-    }
-
     return (
         <>
-            <button onClick={() => update()}>update</button>
             <main className="main">
                 <ObserverDefaultWidgets />
             </main>
