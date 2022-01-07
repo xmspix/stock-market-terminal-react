@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Profile from '../components/Profile';
+import UserSideMenu from '../components/UserSideMenu';
 import store from '../store';
 import { widgetCount } from '../utils/helpers';
 import Footer from '../components/Footer';
@@ -28,7 +28,7 @@ function Home() {
             <main className="main">
                 <ObserverDefaultWidgets />
             </main>
-            <Profile />
+            <UserSideMenu />
             <Footer />
         </>
     )

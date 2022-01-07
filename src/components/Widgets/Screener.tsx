@@ -79,12 +79,21 @@ function Screener() {
         };
 
         const WidgetBody = () => {
+            const handleDragStart = (e: any) => {
+                store.setDraggableElement(e.target, "screener");
+                console.log(store.draggableElement);
+                
+            };
+            const handleDragEnd = () => {
+                document.querySelector(".dragged")?.classList.remove("dragged");
+            };
+
             return (
                 <>
                     <table className="table table__watchlist">
                         <thead className="table__labels">
                             <tr className="table__row">
-                                <th className="table__header"><i className="fas fa-filter"></i></th>
+                                {/* <th className="table__header"><i className="fas fa-filter"></i></th> */}
                                 <th className="table__header">Symbol</th>
                                 <th className="table__header">Price</th>
                                 <th className="table__header">Change $</th>
@@ -95,8 +104,8 @@ function Screener() {
                         <tbody className="table__body">
                             {data.map((item: Idata, index: number) => {
                                 return (
-                                    <tr className="table__row" key={index}>
-                                        <td className="table__data"><i className="fas fa-star"></i></td>
+                                    <tr className="table__row" key={index} draggable="true" onDragStart={(e) => handleDragStart(e)} onDragEnd={() => handleDragEnd()}>
+                                        {/* <td className="table__data"><i className="fas fa-star"></i></td> */}
                                         <td className="table__data">{item.symbol}</td>
                                         <td className="table__data">{item.close}</td>
                                         <td className="table__data">{item.changeNet}</td>

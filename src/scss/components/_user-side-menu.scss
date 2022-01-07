@@ -1,5 +1,5 @@
-.profile {
-    grid-area: profile;
+.user-side-menu {
+    grid-area: user-side-menu;
     position: fixed;
     background: #2d2f32;
     right: 0;
@@ -79,14 +79,16 @@
 
     &__friend {
         position: relative;
-
-        &::after {
-            content: "●";
-            color: #79e7a0;
-            position: absolute;
-            bottom: 1px;
-            right: 5px;
-            font-size: 2em;
+        
+        &--online {
+            &::after {
+                content: "●";
+                color: #79e7a0;
+                position: absolute;
+                bottom: 1px;
+                right: 5px;
+                font-size: 2em;
+            }
         }
     }
 }

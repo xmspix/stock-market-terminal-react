@@ -30,23 +30,23 @@ function WidgetTabAdd({ widgetID }: IWidgetTabAdd) {
     const WidgetOptions = () => {
         const handleClick = (widget: string) => {
             switch (widget) {
-                case "screener":
+                case "Screener":
                     store.updateWidget(widgetID, { id: 1, type: 'screener', tab: 'Market Screener', isActive: false, content: <Screener /> });
                     break;
-                case "chart":
-                    store.updateWidget(widgetID, { id: 3, type: 'chart', tab: 'Chart', isActive: false, content: <Chart /> });
+                case "Chart":
+                    store.updateWidget(widgetID, { id: 2, type: 'chart', tab: 'Chart', isActive: false, content: <Chart /> });
                     break;
-                case 'watchlist':
-                    store.updateWidget(widgetID, { id: 7, type: 'watchlist', tab: 'Watchlist', isActive: false, content: <Watchlist /> });
+                case 'Watchlist':
+                    store.updateWidget(widgetID, { id: 3, type: 'watchlist', tab: 'Watchlist', isActive: false, content: <Watchlist /> });
                     break;
-                case 'matrix':
-                    store.updateWidget(widgetID, { id: 5, type: 'matrix', tab: 'Matrix', isActive: false, content: <Matrix /> });
+                case 'Matrix':
+                    store.updateWidget(widgetID, { id: 4, type: 'matrix', tab: 'Matrix', isActive: false, content: <Matrix /> });
                     break;
-                case 'positionTracker':
-                    store.updateWidget(widgetID, { id: 6, type: 'positionTracker', tab: 'Position Tracker', isActive: false, content: <PositionTracker /> });
+                case 'Position Tracker':
+                    store.updateWidget(widgetID, { id: 5, type: 'positionTracker', tab: 'Position Tracker', isActive: false, content: <PositionTracker /> });
                     break;
-                case 'wallets':
-                    store.updateWidget(widgetID, { id: 7, type: 'wallets', tab: 'Wallets', isActive: false, content: <Wallets /> });
+                case 'Wallets':
+                    store.updateWidget(widgetID, { id: 6, type: 'wallets', tab: 'Wallets', isActive: false, content: <Wallets /> });
                     break;
             }
         }

@@ -16,22 +16,21 @@ function App() {
   useEffect(() => {
     const widget1 = [
       {id:1, type: 'screener', tab: 'Market Screener', isActive: true, content: <Screener /> },
-      {id:2, type: 'test', tab: 'Test', isActive: false, content: <div>Test body</div> },
     ];
     const widget2 = [
-      {id:3, type: 'chart', tab: 'Chart', isActive: true, content: <Chart/> },
+      {id:2, type: 'chart', tab: 'Chart', isActive: true, content: <Chart/> },
     ];
     const widget3 = [
-      {id:4, type: 'watchlist', tab: 'Watchlist', isActive: true, content: <Watchlist /> },
+      {id:3, type: 'watchlist', tab: 'Watchlist', isActive: true, content: <Watchlist /> },
     ];
     const widget4 = [
-      {id:5, type: 'matrix', tab: 'Matrix', isActive: true, content: <Matrix /> },
+      {id:4, type: 'matrix', tab: 'Matrix', isActive: true, content: <Matrix /> },
     ];
     const widget5 = [
-      {id:6, type: 'positionTracker', tab: 'Position Tracker', isActive: true, content: <PositionTracker /> },
+      {id:5, type: 'positionTracker', tab: 'Position Tracker', isActive: true, content: <PositionTracker /> },
     ];
     const widget6 = [
-      {id:7, type: 'wallets', tab: 'Wallets', isActive: true, content: <Wallets /> },
+      {id:6, type: 'wallets', tab: 'Wallets', isActive: true, content: <Wallets /> },
     ];
 
     store.setWidgets([widget1, widget2, widget3, widget4, widget5, widget6]);

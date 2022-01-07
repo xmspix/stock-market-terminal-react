@@ -8,25 +8,25 @@ export default function Header() {
 
     useEffect(() => {
         const rootElem = document.querySelector<HTMLDivElement>('#root');
-        const profileElem = document.querySelector<HTMLDivElement>('.profile');
+        const userSideMenuElem = document.querySelector<HTMLDivElement>('.user-side-menu');
         if (active) {
-            profileElem?.classList.add("profile__active");
+            userSideMenuElem?.classList.add("user-side-menu__active");
             rootElem!.style.width = "calc(100% - 50px)";
         }
     }, [active])
 
     const handleUserSideMenu = () => {
         const rootElem = document.querySelector<HTMLDivElement>('#root');
-        const profileElem = document.querySelector<HTMLDivElement>('.profile');
+        const userSideMenuElem = document.querySelector<HTMLDivElement>('.user-side-menu');
         if (active) {
             //  if user menu is active than hide
             setActive(false);
-            profileElem?.classList.remove("profile__active");
+            userSideMenuElem?.classList.remove("user-side-menu__active");
             rootElem!.style.width = "100%";
         } else {
             //  if user menu is't active than show
             setActive(true);
-            profileElem?.classList.add("profile__active");
+            userSideMenuElem?.classList.add("user-side-menu__active");
             rootElem!.style.width = "calc(100% - 50px)";
         }
     }

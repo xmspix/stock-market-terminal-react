@@ -1,1 +1,3 @@
-export const widgets = ["screener", "chart", "watchlist", "matrix", "positionTracker", "wallets"];
+export const widgets = [
+    "Screener", "Chart", "Watchlist", "Matrix", "Position Tracker", "Wallets"
+];
