@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from "react-router-dom";
+import { debounce } from "../utils/helpers";
 
 export default function Header() {
     const [active, setActive] = useState(true);
@@ -31,13 +32,23 @@ export default function Header() {
         }
     }
 
+    const searchRef = useRef<HTMLInputElement>(null);
+
+    const debounceSearch = debounce(() => {
+        console.log(searchRef.current!.value);
+    }, 500);
+
+    const handleSearch = () => {
+        debounceSearch();
+    }
+
     return <header className="header">
         <div className="header__logo-container">
             <p>Stock Market Terminal</p>
         </div>
         <div className="header__search">
-            <i className="search search__icon fa fa-search"></i>
-            <input className="search__input" type="text" placeholder="Search" />
+            <i className="search__icon fa fa-search"></i>
+            <input className="search__input" type="text" placeholder="Search" ref={searchRef} onChange={() => handleSearch()} />
         </div>
         <nav className="header__nav">
             <ul className="header__list">

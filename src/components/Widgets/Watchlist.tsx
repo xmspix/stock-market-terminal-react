@@ -1,23 +1,19 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useRef, useState } from "react";
-import { addToWatchlist, getWatchlist, getWatchlistNames } from "../../data";
+import { addToWatchlist, getWatchlist, getWatchlistNames, removeFromWatchlist } from "../../data";
 import store from "../../store";
 import { numberFormater } from "../../utils/helpers";
+import { RemoveBtn } from "../Buttons";
 import { Idata } from "./Screener";
 
 function Watchlist() {
-  // const [data, setData]:any = useState();
-
   const watchlistNames = getWatchlistNames();
-
   const [watchlist, setWatchlist] = useState(watchlistNames[0]);
-
   const selectedWatchlist = useRef(watchlistNames[0]);
 
   useEffect(() => {
     const watchlistData = getWatchlist();
     store.setWatchlist(watchlistData);
-    // setData(getWatchlist())
   }, []);
 
   const WidgetToolBar = () => {
@@ -81,17 +77,29 @@ function Watchlist() {
 
     const handleDrop = async (e: any) => {
       const symbol = store.draggableElement.children[0].innerText;
-      if (store.draggableElement && store.dragFrom === "screener") {
+      if (store.draggableElement && store.dragFrom) {
         handleAddToWatchlist(symbol, watchlist, store.user.id);
-      } else {
-        // const wID = store.watchlist.filter((itm: any) => itm.symbol === symbol)[0]._id;
-        // handleAddToWatchlist(symbol, watchlist, store.user.id);
-        // api.watchlist_remove(wID).then(() => callback());
       }
     };
 
+    const handleDragStart = (e: any) => {
+      store.setDraggableElement(e.target, "watchlist");
+    };
+    const handleDragEnd = () => {
+      document.querySelector(".dragged")?.classList.remove("dragged");
+    };
+
+    const handleRemove = (symbol: string) => {
+      const watchlistData = removeFromWatchlist({ symbol: symbol, list: watchlist })
+      store.setWatchlist(watchlistData);
+    }
+
     return (
-      <table className="table table__watchlist" onDragOver={handleDragOver} onDrop={handleDrop}>
+      <table className="table table__watchlist"
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        onDragStart={(e) => handleDragStart(e)} onDragEnd={() => handleDragEnd()}
+      >
         <thead className="table__labels">
           <tr className="table__row">
             {/* <th className="table__header"><i className="fas fa-filter"></i></th> */}
@@ -100,18 +108,20 @@ function Watchlist() {
             <th className="table__header">Change $</th>
             <th className="table__header">Change %</th>
             <th className="table__header">Volume</th>
+            <th className="table__header">Remove</th>
           </tr>
         </thead>
         <tbody className="table__body">
           {
             store.watchlist?.filter((item: any) => item.list === watchlist).map((item: Idata, index: number) => (
-              <tr className="table__row" key={index}>
+              <tr className="table__row" key={index} draggable={true}>
                 {/* <td className="table__data"><i className="fas fa-star"></i></td> */}
                 <td className="table__data">{item.symbol}</td>
                 <td className="table__data">{item.close}</td>
                 <td className="table__data">{item.changeNet}</td>
                 <td className="table__data">{item.changePercent}</td>
                 <td className="table__data">{numberFormater(item.volume)}</td>
+                <td className="table__data"><RemoveBtn cb={() => handleRemove(item.symbol)} /></td>
               </tr>
             ))
           }

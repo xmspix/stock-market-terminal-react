@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
-import store from "../../store";
-import { numberFormater } from "../../utils/helpers";
+import store from "../../../store";
+import { filterApi, Filters, SearchSymbol } from "./ScreenerFilters";
+import ScreenerTable from "./ScreenerTable";
+import { Pagination } from "../../Pagination";
 export interface Idata {
     changeNet: number;
     changePercent: number;
@@ -17,14 +19,41 @@ export interface Idata {
 }
 
 function Screener() {
-    const [data, setData]: any[] = useState(null);
+    const [state, setState]: any = useState({
+        records: [],
+        pages: 0,
+        rows: 0
+    });
+
+    const [page, setPage] = useState(1);
+    const [symbol, setSymbol] = useState("");
+    const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        const records = require("../../data/records.json");
-        setData(records.slice(0, 10));
-    }, []);
+        getRecords();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filters]);
 
-    if (!data) {
+    const getRecords = async (parms = {}) => {
+        const records = require("../../../data/records.json");
+        const filteredRecords: any = filterApi({ ...filters, ...parms }, records)
+
+        if (state.records.length === 0) {
+            setState({
+                records: records.slice((page - 1) * 10, page * 10),
+                pages: Math.ceil(records.length / 10),
+                rows: records.length,
+            })
+        } else {
+            setState({
+                records: filteredRecords.slice((page - 1) * 10, page * 10),
+                pages: Math.ceil(filteredRecords.length / 10),
+                rows: filteredRecords.length,
+            })
+        }
+    };
+
+    if (!state.records) {
         return <div>Loading...</div>;
     } else {
         const WidgetToolbar = () => {
@@ -32,12 +61,17 @@ function Screener() {
                 <div className="widget__toolbar">
                     <div className="items">
                         <div className="items__left">
-                            <i className="favorite favorite__icon btn fas fa-star"></i>
+                            {/* <i className="favorite favorite__icon btn fas fa-star"></i> */}
                             <div className="widget__search">
-                                <i className="search search__icon fa fa-search"></i>
-                                <input className="search__input" type="text" placeholder="Search" />
+                                <SearchSymbol filter={(f: any) => {
+                                    // console.log({ ...filters, ...f });
+
+                                    setFilters({ ...filters, ...f });
+                                    setSymbol(f.symbol);
+                                    // setState(state.records.filter((item: Idata) => item.symbol.includes(f.symbol)));
+                                }} symbol={symbol} />
                             </div>
-                            <div className="select select__container">
+                            {/* <div className="select select__container">
                                 <select className="widget__select widget__select--wide">
                                     <option value="">1D</option>
                                     <option value="">W</option>
@@ -65,7 +99,7 @@ function Screener() {
                                     <option value="">Overview 4</option>
                                 </select>
                                 <i className="btn btn__select btn__select-right fas fa-chevron-right"></i>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="items__right">
                             <div className="alert">
@@ -78,52 +112,30 @@ function Screener() {
             );
         };
 
-        const WidgetBody = () => {
-            const handleDragStart = (e: any) => {
-                store.setDraggableElement(e.target, "screener");
-                console.log(store.draggableElement);
-                
-            };
-            const handleDragEnd = () => {
-                document.querySelector(".dragged")?.classList.remove("dragged");
-            };
-
+        const TableFooter = () => {
+            const recordsTable = page !== state.pages ? page * state.records.length : state.rows;
             return (
-                <>
-                    <table className="table table__watchlist">
-                        <thead className="table__labels">
-                            <tr className="table__row">
-                                {/* <th className="table__header"><i className="fas fa-filter"></i></th> */}
-                                <th className="table__header">Symbol</th>
-                                <th className="table__header">Price</th>
-                                <th className="table__header">Change $</th>
-                                <th className="table__header">Change %</th>
-                                <th className="table__header">Volume</th>
-                            </tr>
-                        </thead>
-                        <tbody className="table__body">
-                            {data.map((item: Idata, index: number) => {
-                                return (
-                                    <tr className="table__row" key={index} draggable="true" onDragStart={(e) => handleDragStart(e)} onDragEnd={() => handleDragEnd()}>
-                                        {/* <td className="table__data"><i className="fas fa-star"></i></td> */}
-                                        <td className="table__data">{item.symbol}</td>
-                                        <td className="table__data">{item.close}</td>
-                                        <td className="table__data">{item.changeNet}</td>
-                                        <td className="table__data">{item.changePercent}</td>
-                                        <td className="table__data">{numberFormater(item.volume)}</td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </>
+                <div className="pagination">
+                    <div>Showing {recordsTable} of {state.rows} entries</div>
+                    <Pagination
+                        currentPage={page <= state.pages ? page : 1}
+                        totalPages={state.pages}
+                        setPage={(page: number) => {
+                            setPage(page);
+                            getRecords({ ...filters, page: page });
+                        }}
+                    />
+                </div>
             );
         };
 
         return (
             <>
-                {store.isWidgetMaximized && <WidgetToolbar />}
-                <WidgetBody />
+                <WidgetToolbar />
+                {store.isWidgetMaximized && <Filters filter={(f: any) => setFilters({ ...filters, ...f })} />}
+                <ScreenerTable records={state.records} tableFooter={<TableFooter />} page={page} sortData={(sort: any) => {
+                    setFilters({ ...filters, ...sort });
+                }} />
             </>
         );
     }
@@ -131,3 +143,4 @@ function Screener() {
 
 
 export default observer(Screener);
+

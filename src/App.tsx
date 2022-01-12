@@ -1,41 +1,17 @@
 import React, { useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
+// import { IWidgets, widgets } from "./utils/widgetHelpers";
 import Header from "./components/Header";
-import Chart from "./components/Widgets/Chart";
-import Matrix from "./components/Widgets/Matrix";
-import PositionTracker from "./components/Widgets/PositionTracker";
-import Screener from "./components/Widgets/Screener";
-import Wallets from "./components/Widgets/Wallets";
-import Watchlist from "./components/Widgets/Watchlist";
+import { IOptions, widgets } from "./components/Widget";
 import Home from "./pages/Home";
 import store from "./store";
 
 function App() {
 
   useEffect(() => {
-    const widget1 = [
-      {id:1, type: 'screener', tab: 'Market Screener', isActive: true, content: <Screener /> },
-    ];
-    const widget2 = [
-      {id:2, type: 'chart', tab: 'Chart', isActive: true, content: <Chart/> },
-    ];
-    const widget3 = [
-      {id:3, type: 'watchlist', tab: 'Watchlist', isActive: true, content: <Watchlist /> },
-    ];
-    const widget4 = [
-      {id:4, type: 'matrix', tab: 'Matrix', isActive: true, content: <Matrix /> },
-    ];
-    const widget5 = [
-      {id:5, type: 'positionTracker', tab: 'Position Tracker', isActive: true, content: <PositionTracker /> },
-    ];
-    const widget6 = [
-      {id:6, type: 'wallets', tab: 'Wallets', isActive: true, content: <Wallets /> },
-    ];
-
-    store.setWidgets([widget1, widget2, widget3, widget4, widget5, widget6]);
+    store.setWidgets(widgets.map((e: IOptions) => [{ ...e, isActive: true }]));
   }, [])
-
 
   return (
     // HashRouter is used for Github Pages
